@@ -1,0 +1,41 @@
+# Roles
+1. admin - owner of the supply chain
+2. inspection manager - to verify the checklist is met for goods to transport 
+3. procurement manager - create check list to be verified
+4. client - can track order status and provide checklist
+
+
+Questtios
+
+1. can we allow to update older checklist (like multichoice type to text? if yes than how already answered should handle?)
+2. should only allow 1 inspection manager in system?
+3. 
+
+procurement-management/
+│
+├── config/                  # Configuration files
+│   ├── db.js                # Database connection setup
+│
+├── models/                  # Sequelize models
+│   ├── order.js             # Order model
+│   ├── checklist.js         # Checklist model
+│   ├── user.js              # User model (admin, procurement manager, inspection manager, client)
+│
+├── routes/                  # API routes
+│   ├── orderRoutes.js       # Routes for orders
+│   ├── checklistRoutes.js   # Routes for checklists
+│   ├── userRoutes.js        # Routes for users (authentication, role-based)
+│
+├── controllers/             # Controllers to handle the business logic
+│   ├── orderController.js
+│   ├── checklistController.js
+│   ├── userController.js
+│
+├── middleware/              # Middleware for authentication and authorization
+│   ├── authMiddleware.js    # Authenticated user check (using JWT)
+│
+├── public/                  # Public folder for static files (e.g., images)
+│
+├── views/                   # Views if using a templating engine (e.g., EJS)
+├── app.js                   # Main application entry point
+└── package.json             # Node.js dependencies and configurations

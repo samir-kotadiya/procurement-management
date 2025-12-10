@@ -1,0 +1,10 @@
+PORT=3000
+
+#DB config
+DB_HOST=localhost
+DB_NAME=procurement_db
+DB_USER=postgres
+DB_PASS=root
+
+JWT_SECRET=your_jwt_secret
+JWT_VALIDITY=24h # must be compatible with jsonwebtoken lib

@@ -11,6 +11,7 @@ Questtios
 2. should only allow 1 inspection manager in system?
 3. 
 
+```
 procurement-management/
 │
 ├── config/                  # Configuration files
@@ -39,7 +40,7 @@ procurement-management/
 ├── views/                   # Views if using a templating engine (e.g., EJS)
 ├── app.js                   # Main application entry point
 └── package.json             # Node.js dependencies and configurations
-
+```
 
 For DB migration just create DB and update config in db Sequelize will auto create tables
 Or 
@@ -47,3 +48,4 @@ create tables from `db.sql` located at root
 
 API documents
 added postman colection here `Procurement Management.postman_collection.json`
+

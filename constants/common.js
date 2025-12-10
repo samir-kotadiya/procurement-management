@@ -1,5 +1,3 @@
-const { BOOLEAN } = require("sequelize");
-
 module.exports = {
     ROLES: {
         ADMIN: 1,
@@ -19,5 +17,10 @@ module.exports = {
         IN_PROGRESS: 'in_progress',
         DONE: 'done', // once inspection manager done with all checklist
         COMPLETED: 'completed'
+    },
+    ACTIVITY_TYPES: {
+        ORDER_CREATED: 'Order created',
+        ORDER_UPDATED: 'Order {key} updated to {value}',
+        CHECKLIST_SUBMITTED: 'Checklist Submitted'
     }
 };

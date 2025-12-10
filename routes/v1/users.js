@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
 /* 
  create user route
 */
-router.post('/', rolePermissionsMiddleware('users', 'canCreate', { field: 'roleId', from: 'body', operator: 'in', permission: 'allowedRoles'}), async (req, res) => {
+router.post('/', rolePermissionsMiddleware('users', 'canCreate', { field: 'roleId', from: 'body', operator: 'in', permission: 'allowedRoles' }), async (req, res) => {
     try {
         const { error, value: data } = userValidationSchema.validate(req.body);
 
@@ -80,11 +80,6 @@ router.get('/', rolePermissionsMiddleware('users', 'canView'), async (req, res) 
 */
 router.post('/:userId/assign-manager', rolePermissionsMiddleware('users', 'canUpdate'), async (req, res) => {
     try {
-        // Only Admins should be able to perform this
-        if (req.user.roleId !== 1) { // Assuming 1 is ADMIN_ROLE
-            return res.forbidden('Forbidden');
-        }
-
         const { error, value: data } = assignManagerValidationSchema.validate(req.body);
         if (error) {
             return res.badRequest(error?.message);
@@ -103,11 +98,6 @@ router.post('/:userId/assign-manager', rolePermissionsMiddleware('users', 'canUp
 */
 router.post('/:userId/unassign-manager', rolePermissionsMiddleware('users', 'canUpdate'), async (req, res) => {
     try {
-        // Only Admins should be able to perform this
-        if (req.user.roleId !== 1) { // Assuming 1 is ADMIN_ROLE
-            return res.forbidden('Forbidden');
-        }
-
         const user = await unassignManager(req.params.userId);
 
         return res.ok(user);

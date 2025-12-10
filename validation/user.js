@@ -68,7 +68,7 @@ module.exports.userValidationSchema = Joi.object({
             'string.valid': 'Confirm password must match password',
         }),
 
-    roleId: Joi.string().valid(ROLES.CLIENT,ROLES.INSPECTION_MANAGER, ROLES.PROCUREMENT_MANAGER)
+    roleId: Joi.string().valid(ROLES.CLIENT, ROLES.INSPECTION_MANAGER, ROLES.PROCUREMENT_MANAGER)
 });
 
 // User Login validation schema
@@ -110,7 +110,7 @@ module.exports.userLoginValidationSchema = Joi.object({
 
 // Assign manager validation schema
 module.exports.assignManagerValidationSchema = Joi.object({
-    procurementManagerId: Joi.string().guid({ version: 'uuidv4' }).required()
+    procurementManagerId: Joi.number().required()
         .messages({
             'any.required': 'procurementManagerId is required',
         }),

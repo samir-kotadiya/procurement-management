@@ -1,13 +1,44 @@
 const { Op, col } = require('sequelize');
-const { ROLES, ORDER_STATUSES } = require('../constants/common');
+const { ROLES, ORDER_STATUSES, ACTIVITY_TYPES } = require('../constants/common');
+const sequelize = require('../config/db');
 const { getPaginationOptios } = require('../helpers');
 const orderModel = require('../models/order');
 const OrderChecklistAnswer = require('../models/order_checklist_answer');
 const checklistModel = require('../models/checklist');
 const checklistVersionModel = require('../models/checklist_version');
 const orderChecklistAnswerModel = require('../models/order_checklist_answer');
+const OrderActivityModel = require('../models/order_activities');
 const { validateChecklistByClientIdAndChecklistId, getChecklistById } = require('./checklist.service');
 const { validateUserByIdAndRoleId, validateClientById } = require('./user.service');
+
+/**
+ * Logs an activity for an order.
+ * @param {number} orderId - The ID of the order.
+ * @param {number} userId - The ID of the user performing the action.
+ * @param {string} activityType - The type of activity.
+ * @param {object} details - Additional details about the activity.
+ * @param {object} transaction - Sequelize transaction object.
+ */
+const logActivity = async (orderId, userId, activityType, details = {}, data = null) => {
+    // This is an async fire-and-forget call, so we don't await it in the main flow
+    // to avoid blocking the response. We handle errors internally.
+
+    if (data && typeof data === "object") {
+        Object.keys(data).forEach(key => {
+            const placeholder = `{${key}}`;
+            activityType = activityType.replace(new RegExp(placeholder, 'g'), data[key]);
+        });
+    }
+
+    OrderActivityModel.create({
+        orderId,
+        userId,
+        activityType,
+        details,
+    }).catch(err => {
+        console.error(`[logActivity] Failed to log activity: ${activityType} for orderId: ${orderId}`, err);
+    });
+};
 
 module.exports = {
 
@@ -39,6 +70,8 @@ module.exports = {
             }
 
             let order = await orderModel.create(orderRecord, { raw: true });
+            // Log activity without blocking the response
+            logActivity(order.id, session.id, ACTIVITY_TYPES.ORDER_CREATED, data);
             return order;
         } catch (err) {
             console.error(err)
@@ -50,7 +83,7 @@ module.exports = {
 
     /**
      * service to create order list
-     * @param {*} data 
+     * @param {*} data
      * @returns 
      */
     getOrders: async (session, data) => {
@@ -117,7 +150,8 @@ module.exports = {
             }
 
             await orderModel.update(data, { where: { id: order.id } }, { raw: true });
-            return { ...order, ...data };
+
+            logActivity(orderId, session.id, ACTIVITY_TYPES.ORDER_UPDATED, data, { key: data?.checklistId ? 'checklist' : 'status', value: data.checklist || data.status });
         } catch (err) {
             console.error(err)
             console.error('[order.updateOrder] error, ', err?.message);
@@ -128,78 +162,82 @@ module.exports = {
 
     /**
      * service to save order checklist answer
-     * @param {*} data 
+     * @param {*} data
      * @returns order
      */
     saveOrderChecklist: async (session, orderId, data) => {
         try {
-            const order = await orderModel.findOne({
-                attributes: ['id', 'status', 'checklistId', 'checklistVersion'],
-                where: { id: orderId },
-                raw: true
-            });
-            if (!order) {
-                throw new Error('invalid order id provided');
-            }
-
-            if (order.status === ORDER_STATUSES.COMPLETED) {
-                throw new Error('can not update completed order');
-            }
-
-            // Fetch the specific version of the checklist to validate against
-            const checklist = await getChecklistById(session, order.checklistId, { version: order.checklistVersion });
-
-            if (!checklist || !checklist.questions) {
-                throw new Error('Checklist questions not found for this order.');
-            }
-
-            // Validate payload answers against the checklist questions
-            const checklistQuestionMap = new Map(checklist.questions.map(q => [q.id, q]));
-            const submittedAnswerMap = new Map(data.questions.map(a => [a.id, a]));
-
-            // 1. Check if any submitted answers are for questions that don't exist in the checklist.
-            for (const submittedId of submittedAnswerMap.keys()) {
-                if (!checklistQuestionMap.has(submittedId)) {
-                    throw new Error(`Invalid questionId provided: ${submittedId}. It does not exist in the checklist.`);
+            const result = await sequelize.transaction(async (t) => {
+                const order = await orderModel.findOne({
+                    attributes: ['id', 'status', 'checklistId', 'checklistVersion'],
+                    where: { id: orderId },
+                    transaction: t,
+                    raw: true
+                });
+                if (!order) {
+                    throw new Error('invalid order id provided');
                 }
-            }
 
-            // 2. Check if all required questions from the checklist have been answered.
-            for (const [id, question] of checklistQuestionMap.entries()) {
-                if (question.isRequired && !submittedAnswerMap.has(id)) {
-                    throw new Error(`Missing answer for required question: "${question.question}"`);
+                if (order.status === ORDER_STATUSES.COMPLETED) {
+                    throw new Error('can not update completed order');
                 }
-            }
 
-            // 3. Check if submitted answers with options are valid.
-            for (const [id, answer] of submittedAnswerMap.entries()) {
-                const question = checklistQuestionMap.get(id);
-                // Check only for questions that have options and have been answered.
-                if (question && question.options && question.options.length > 0 && answer.answer) {
-                    const validOptionKeys = new Set(question.options.map(opt => opt.key));
-                    if (!validOptionKeys.has(answer.answer)) {
-                        throw new Error(`Invalid answer "${answer.answer}" for question "${question.question}". Please provide one of the valid options.`);
+                // Fetch the specific version of the checklist to validate against
+                const checklist = await getChecklistById(session, order.checklistId, { version: order.checklistVersion });
+
+                if (!checklist || !checklist.questions) {
+                    throw new Error('Checklist questions not found for this order.');
+                }
+
+                // Validate payload answers against the checklist questions
+                const checklistQuestionMap = new Map(checklist.questions.map(q => [q.id, q]));
+                const submittedAnswerMap = new Map(data.questions.map(a => [a.id, a]));
+
+                // 1. Check if any submitted answers are for questions that don't exist in the checklist.
+                for (const submittedId of submittedAnswerMap.keys()) {
+                    if (!checklistQuestionMap.has(submittedId)) {
+                        throw new Error(`Invalid questionId provided: ${submittedId}. It does not exist in the checklist.`);
                     }
                 }
-            }
 
-            const answerRecord = {
-                orderId: order.id,
-                checklistId: order.checklistId,
-                checklistVersion: order.checklistVersion,
-                answers: data.questions,
-                createdBy: session.id
-            };
+                // 2. Check if all required questions from the checklist have been answered.
+                for (const [id, question] of checklistQuestionMap.entries()) {
+                    if (question.isRequired && !submittedAnswerMap.has(id)) {
+                        throw new Error(`Missing answer for required question: "${question.question}"`);
+                    }
+                }
 
-            // Use upsert to either create a new answer or update an existing one.
-            // The unique constraint on `orderId` ensures this works as expected.
-            await orderChecklistAnswerModel.upsert(answerRecord);
+                // 3. Check if submitted answers with options are valid.
+                for (const [id, answer] of submittedAnswerMap.entries()) {
+                    const question = checklistQuestionMap.get(id);
+                    // Check only for questions that have options and have been answered.
+                    if (question && question.options && question.options.length > 0 && answer.answer) {
+                        const validOptionKeys = new Set(question.options.map(opt => opt.key));
+                        if (!validOptionKeys.has(answer.answer)) {
+                            throw new Error(`Invalid answer "${answer.answer}" for question "${question.question}". Please provide one of the valid options.`);
+                        }
+                    }
+                }
 
-            await orderModel.update({ status: ORDER_STATUSES.DONE }, { where: { id: order.id } });
+                const answerRecord = {
+                    orderId: order.id,
+                    checklistId: order.checklistId,
+                    checklistVersion: order.checklistVersion,
+                    answers: data.questions,
+                    createdBy: session.id
+                };
 
-            // After upserting, fetch the record to ensure we return the complete and correct data.
-            const finalRecord = await orderChecklistAnswerModel.findOne({ where: { orderId: order.id } });
-            return finalRecord;
+                await Promise.all([
+                    orderChecklistAnswerModel.upsert(answerRecord, { transaction: t }),
+                    orderModel.update({ status: ORDER_STATUSES.DONE }, { where: { id: order.id }, transaction: t })
+                ]);
+
+                // Log activity without blocking the response
+                logActivity(orderId, session.id, ACTIVITY_TYPES.CHECKLIST_SUBMITTED, data);
+
+                return orderChecklistAnswerModel.findOne({ where: { orderId: order.id }, transaction: t });
+            });
+            return result;
         } catch (err) {
             console.error(err)
             console.error('[order.saveOrderChecklist] error, ', err?.message);
@@ -282,5 +320,35 @@ module.exports = {
             throw err;
         }
 
-    }
+    },
+
+    /**
+     * Service to get activity logs for a specific order with pagination.
+     * @param {number} orderId - The ID of the order.
+     * @param {object} data - Pagination data { page, pageSize }.
+     * @returns {Promise<object>} - A promise that resolves to the paginated activities.
+     */
+    getOrderActivities: async (session, orderId, data) => {
+        try {
+            const { pageSize, offset } = getPaginationOptios(data);
+
+            const { count, rows } = await OrderActivityModel.findAndCountAll({
+                where: { orderId },
+                order: [['createdAt', 'DESC']],
+                limit: pageSize,
+                offset,
+                raw: true,
+            });
+
+            return {
+                totalItems: count,
+                activities: rows,
+                totalPages: Math.ceil(count / pageSize),
+                currentPage: data.page || 1,
+            };
+        } catch (err) {
+            console.error('[order.getOrderActivities] error, ', err.message);
+            throw err;
+        }
+    },
 }

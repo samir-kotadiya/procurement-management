@@ -1,7 +1,7 @@
 const express = require('express');
 const { orderValidationSchema, orderPatchValidationSchema, orderChecklistAnswerValidationSchema } = require('../../validation/order');
 const rolePermissionsMiddleware = require('../../middleware/permission');
-const { createOrder, updateOrder, getOrders, saveOrderChecklist, getOrderWithChecklist, getChecklistById } = require('../../services/order.service');
+const { createOrder, updateOrder, getOrders, saveOrderChecklist, getOrderWithChecklist, getChecklistById, getOrderActivities } = require('../../services/order.service');
 const { commonPaginationValidationSchema } = require('../../validation');
 const orderModel = require('../../models/order');
 const { getChecklistById: getChecklist } = require('../../services/checklist.service');
@@ -157,5 +157,16 @@ router.post('/:orderId/:questionId/upload', rolePermissionsMiddleware('order_che
         return res.internalServerError(err?.message);
     }
 });
+
+router.get('/:orderId/activities', rolePermissionsMiddleware('orders', 'canView'), async (req, res) => {
+    try {
+        const order = await getOrderActivities(req.user, req.params.orderId, req.query);
+
+        return res.ok(order);
+    } catch (err) {
+        return res.internalServerError(err?.message);
+    }
+});
+
 
 module.exports = router;

@@ -1,0 +1,1972 @@
+{
+	"info": {
+		"_postman_id": "bfa4a1c6-0c66-4bcf-9992-8b5388a4a110",
+		"name": "Procurement Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12480358",
+		"_collection_link": "https://planetary-sunset-244396.postman.co/workspace/mi~d9dfbd57-8166-4453-a62d-d8ba6303cda4/collection/12480358-bfa4a1c6-0c66-4bcf-9992-8b5388a4a110?action=share&source=collection_link&creator=12480358"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Admin Test\",\n    \"email\": \"admin@example.com\",\n    \"phoneCode\": \"+91\",\n    \"phone\": \"1234567891\",\n    \"password\": \"Password\",\n    \"confirmPassword\": \"Password\" // This should match the password\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register (Admin)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Admin Test\",\n    \"email\": \"admin@example.com\",\n    \"phoneCode\": \"+91\",\n    \"phone\": \"1234567891\",\n    \"password\": \"Password\",\n    \"confirmPassword\": \"Password\" // This should match the password\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/users/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8b-77AgcOWOvp9721sB7Pc+WyZbPNs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Dec 2025 16:42:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"id\": 5,\n        \"name\": \"Admin Test\",\n        \"email\": \"admin@example.com\",\n        \"phoneCode\": \"+91\",\n        \"phone\": \"1234567891\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@example.com\",\n    //\"phone\": \"1234567890\", //without code //only for inspection manager\n    \"password\": \"Password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"john.doe@example.com\",\n    //\"phone\": \"1234567890\", //without code //only for inspection manager\n    \"password\": \"Password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "433"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b1-uJp8VUxcedCilgjccktJ0fVpjao\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 31 Mar 2025 10:29:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"John Doe 1\",\n            \"email\": \"john.doe@example.com\",\n            \"phone\": \"1234567890\",\n            \"password\": \"$2b$08$uKkTv3.523wPPiArjDBc8.klvITAOs/pZ0xTI0kRcJUj5mpO0btWm\",\n            \"roleId\": 1,\n            \"isDeleted\": false,\n            \"isActive\": true,\n            \"isVerified\": true,\n            \"role\": \"ADMIN\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQzNDE2OTYzLCJleHAiOjE3NDM1MDMzNjN9.AVdEpAC0lnx8FcrtnxcB6C8oQPz7PQ0oOIFPY3cZMhQ\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"inspect manger\",\n    \"email\": \"inspect1@example.com\",\n    \"phoneCode\": \"+91\",\n    \"phone\": \"1234567890\",\n    \"password\": \"Password\",\n    \"confirmPassword\": \"Password\", // This should match the password,\n    \"roleId\": 2 // optional[2: INSPECTION_MANAGER, 3: PROCUREMENT_MANAGER,4: CLIENT]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"inspect manger\",\n    \"email\": \"inspectmanager@example.com  \",\n    \"phoneCode\": \"+91\",\n    \"phone\": \"1234567892\",\n    \"password\": \"Password\",\n    \"confirmPassword\": \"Password\", // This should match the password,\n    \"roleId\": 2 // optional[1: ADMIN, 2: INSPECTION_MANAGER, 3: PROCUREMENT_MANAGER, 4: CLIENT] if not provided will consiter as admin\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-/Xxy1iPzKJuIn4y2aoiztGHQ2do\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 31 Mar 2025 16:58:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 500,\n    \"message\": \"user with email/phone already exist\"\n}"
+						}
+					]
+				},
+				{
+					"name": "assign inspection manager to proc manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNzY1MzUyNjYwLCJleHAiOjE3NjU0MzkwNjB9.dh_7i9NBkwqQURSPIrbTaTKLi5QV1pywBYCg2SBtQ0s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"procurementManagerId\": 6\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/users/:userId/assign-manager",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								":userId",
+								"assign-manager"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "assign inspection manager",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"procurementManagerId\": 6\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/users/:userId/assign-manager",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										":userId",
+										"assign-manager"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "423"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a7-gcFzVRD/UcC+7eIH2pkGljmf3zs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Dec 2025 07:46:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"id\": 5,\n        \"name\": \"inspection manager\",\n        \"email\": \"inspection@example.com\",\n        \"phoneCode\": \"+91\",\n        \"phone\": \"1234567893\",\n        \"password\": \"$2b$08$F38aYkUcrk.AQGRBHCMt8O.Rrdc2n8hCbTgXyEAMlVPqskP4MQvGG\",\n        \"roleId\": 2,\n        \"procurementManagerId\": 6,\n        \"isVerified\": true,\n        \"isActive\": true,\n        \"isDeleted\": false,\n        \"createdBy\": 1,\n        \"updatedBy\": null,\n        \"createdAt\": \"2025-12-06T17:45:33.974Z\",\n        \"updatedAt\": \"2025-12-10T07:46:05.930Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "unassign inspection manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNzY1MzUyNjYwLCJleHAiOjE3NjU0MzkwNjB9.dh_7i9NBkwqQURSPIrbTaTKLi5QV1pywBYCg2SBtQ0s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/users/:userId/unassign-manager",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								":userId",
+								"unassign-manager"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "checklist",
+			"item": [
+				{
+					"name": "create checklist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"clientId\": 2,\n    \"title\": \"test with image\",\n    \"questions\": [\n        {\n            \"question\": \"Cooler present?\",\n            \"questionType\": \"radio\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"Yes\"\n                },\n                {\n                    \"key\": \"no\",\n                    \"value\": \"No\"\n                }\n            ]\n        },\n        {\n            \"question\": \"category\",\n            \"questionType\": \"dropdown\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"eatable\",\n                    \"value\": \"Eatable\",\n                    \"isDefault\": true\n                },\n                {\n                    \"key\": \"drinkable\",\n                    \"value\": \"Drinkable\"\n                }\n            ]\n        },\n        {\n            \"question\": \"Driver Details?\",\n            \"questionType\": \"checkbox\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"License present\"\n                },\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"Number active\"\n                },\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"RC book present\"\n                }\n            ]\n        },\n        {\n            \"question\": \"upload loading image?\",\n            \"questionType\": \"image\",\n            \"isRequired\": true\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/checklist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"checklist"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create checklist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"clientId\": 2,\n    \"title\": \"test check list with image\",\n    \"questions\": [\n        {\n            \"question\": \"Cooler present?\",\n            \"questionType\": \"radio\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"Yes\"\n                },\n                {\n                    \"key\": \"no\",\n                    \"value\": \"No\"\n                }\n            ]\n        },\n        {\n            \"question\": \"category\",\n            \"questionType\": \"dropdown\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"eatable\",\n                    \"value\": \"Eatable\",\n                    \"isDefault\": true\n                },\n                {\n                    \"key\": \"drinkable\",\n                    \"value\": \"Drinkable\"\n                },\n                {\n                    \"key\": \"breackfast\",\n                    \"value\": \"Breackfast\"\n                }\n            ]\n        },\n        {\n            \"question\": \"Driver Details?\",\n            \"questionType\": \"checkbox\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"License present\"\n                },\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"Number active\"\n                },\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"RC book present\"\n                }\n            ]\n        },\n        {\n            \"question\": \"upload loading image?\",\n            \"questionType\": \"image\",\n            \"isRequired\": true\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/checklist",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"checklist"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "860"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35c-GYc3NDyOBH+tHG6NKYoVmb7gC+0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Dec 2025 11:50:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"version\": 1,\n        \"isDeleted\": false,\n        \"id\": 1,\n        \"clientId\": 2,\n        \"title\": \"test check list with image\",\n        \"questions\": [\n            {\n                \"id\": 1,\n                \"options\": [\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"Yes\"\n                    },\n                    {\n                        \"key\": \"no\",\n                        \"value\": \"No\"\n                    }\n                ],\n                \"question\": \"Cooler present?\",\n                \"isRequired\": true,\n                \"questionType\": \"radio\"\n            },\n            {\n                \"id\": 2,\n                \"options\": [\n                    {\n                        \"key\": \"eatable\",\n                        \"value\": \"Eatable\",\n                        \"isDefault\": true\n                    },\n                    {\n                        \"key\": \"drinkable\",\n                        \"value\": \"Drinkable\"\n                    }\n                ],\n                \"question\": \"category\",\n                \"isRequired\": true,\n                \"questionType\": \"dropdown\"\n            },\n            {\n                \"id\": 3,\n                \"options\": [\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"License present\"\n                    },\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"Number active\"\n                    },\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"RC book present\"\n                    }\n                ],\n                \"question\": \"Driver Details?\",\n                \"isRequired\": true,\n                \"questionType\": \"checkbox\"\n            },\n            {\n                \"id\": 4,\n                \"question\": \"upload loading image?\",\n                \"isRequired\": true,\n                \"questionType\": \"image\"\n            }\n        ],\n        \"createdBy\": 6,\n        \"updatedAt\": \"2025-12-09T11:50:09.849Z\",\n        \"createdAt\": \"2025-12-09T11:50:09.849Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update checklist by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"test updated\",\n    \"questions\": [\n        {\n            \"question\": \"Cooler present?\",\n            \"questionType\": \"radio\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"Yes\"\n                },\n                {\n                    \"key\": \"no\",\n                    \"value\": \"No\"\n                }\n            ]\n        },\n        {\n            \"question\": \"category\",\n            \"questionType\": \"dropdown\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"eatable\",\n                    \"value\": \"Eatable\",\n                    \"isDefault\": true\n                },\n                {\n                    \"key\": \"drinkable\",\n                    \"value\": \"Drinkable\"\n                }\n            ]\n        },\n        {\n            \"question\": \"Driver Details?\",\n            \"questionType\": \"checkbox\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"License present\"\n                },\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"Number active\"\n                },\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"RC book present\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/checklist/:checklistId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"checklist",
+								":checklistId"
+							],
+							"variable": [
+								{
+									"key": "checklistId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update checklist by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"test updated\",\n    \"questions\": [\n        {\n            \"question\": \"Cooler present?\",\n            \"questionType\": \"radio\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"Yes\"\n                },\n                {\n                    \"key\": \"no\",\n                    \"value\": \"No\"\n                }\n            ]\n        },\n        {\n            \"question\": \"category\",\n            \"questionType\": \"dropdown\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"eatable\",\n                    \"value\": \"Eatable\",\n                    \"isDefault\": true\n                },\n                {\n                    \"key\": \"drinkable\",\n                    \"value\": \"Drinkable\"\n                }\n            ]\n        },\n        {\n            \"question\": \"Driver Details?\",\n            \"questionType\": \"checkbox\",\n            \"isRequired\": true,\n            \"options\": [\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"License present\"\n                },\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"Number active\"\n                },\n                {\n                    \"key\": \"yes\",\n                    \"value\": \"RC book present\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/checklist/:checklistId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"checklist",
+										":checklistId"
+									],
+									"variable": [
+										{
+											"key": "checklistId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "740"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e4-xrmWHCIC00u0eeGjty5JkwSFpX4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Dec 2025 19:45:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"id\": 2,\n        \"clientId\": 2,\n        \"title\": \"test updated\",\n        \"version\": 2,\n        \"questions\": [\n            {\n                \"options\": [\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"Yes\"\n                    },\n                    {\n                        \"key\": \"no\",\n                        \"value\": \"No\"\n                    }\n                ],\n                \"question\": \"Cooler present?\",\n                \"isRequired\": true,\n                \"questionType\": \"radio\"\n            },\n            {\n                \"options\": [\n                    {\n                        \"key\": \"eatable\",\n                        \"value\": \"Eatable\",\n                        \"isDefault\": true\n                    },\n                    {\n                        \"key\": \"drinkable\",\n                        \"value\": \"Drinkable\"\n                    }\n                ],\n                \"question\": \"category\",\n                \"isRequired\": true,\n                \"questionType\": \"dropdown\"\n            },\n            {\n                \"options\": [\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"License present\"\n                    },\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"Number active\"\n                    },\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"RC book present\"\n                    }\n                ],\n                \"question\": \"Driver Details?\",\n                \"isRequired\": true,\n                \"questionType\": \"checkbox\"\n            }\n        ],\n        \"isDeleted\": false,\n        \"createdBy\": 6,\n        \"createdAt\": \"2025-12-06T19:40:54.753Z\",\n        \"updatedAt\": \"2025-12-06T19:45:47.621Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "submit checklist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"clientId\": \"5\",\n    \"question\": \"category 11\",\n    \"questionType\": \"dropdown\",\n    \"isRequired\": true,\n    \"options\": [{\n        \"key\": \"eatable\",\n        \"value\": \"Eatable\"\n    }, {\n        \"key\": \"drinkable\",\n        \"value\": \"Drinkable\"\n    }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/checklist/submit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"checklist",
+								"submit"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create checklist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"clientId\": \"5\",\n    \"question\": \"category 11\",\n    \"questionType\": \"dropdown\",\n    \"isRequired\": true,\n    \"options\": [{\n        \"key\": \"eatable\",\n        \"value\": \"Eatable\"\n    }, {\n        \"key\": \"drinkable\",\n        \"value\": \"Drinkable\"\n    }]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/checklist",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"checklist"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "352"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"160-UyjgvXcTpL2Xx6hhQ83DdXqHFOs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 31 Mar 2025 14:48:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"status\": \"pending\",\n        \"isDeleted\": false,\n        \"id\": 11,\n        \"clientId\": 5,\n        \"question\": \"category 11\",\n        \"questionType\": \"dropdown\",\n        \"isRequired\": true,\n        \"options\": [\n            {\n                \"key\": \"eatable\",\n                \"value\": \"Eatable\"\n            },\n            {\n                \"key\": \"drinkable\",\n                \"value\": \"Drinkable\"\n            }\n        ],\n        \"createdBy\": 1,\n        \"updatedAt\": \"2025-03-31T14:48:18.943Z\",\n        \"createdAt\": \"2025-03-31T14:48:18.943Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get checklist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/checklist?clientId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"checklist"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get checklist",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/v1/checklist?clientId=2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"checklist"
+									],
+									"query": [
+										{
+											"key": "clientId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1431"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"597-z6fxceGInAW45j9S7td0aWpEuPU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Dec 2025 19:51:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": [\n        {\n            \"id\": 2,\n            \"clientId\": 2,\n            \"title\": \"test updated\",\n            \"version\": 2,\n            \"questions\": [\n                {\n                    \"options\": [\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"Yes\"\n                        },\n                        {\n                            \"key\": \"no\",\n                            \"value\": \"No\"\n                        }\n                    ],\n                    \"question\": \"Cooler present?\",\n                    \"isRequired\": true,\n                    \"questionType\": \"radio\"\n                },\n                {\n                    \"options\": [\n                        {\n                            \"key\": \"eatable\",\n                            \"value\": \"Eatable\",\n                            \"isDefault\": true\n                        },\n                        {\n                            \"key\": \"drinkable\",\n                            \"value\": \"Drinkable\"\n                        }\n                    ],\n                    \"question\": \"category\",\n                    \"isRequired\": true,\n                    \"questionType\": \"dropdown\"\n                },\n                {\n                    \"options\": [\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"License present\"\n                        },\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"Number active\"\n                        },\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"RC book present\"\n                        }\n                    ],\n                    \"question\": \"Driver Details?\",\n                    \"isRequired\": true,\n                    \"questionType\": \"checkbox\"\n                }\n            ],\n            \"isDeleted\": false,\n            \"createdBy\": 6,\n            \"createdAt\": \"2025-12-06T19:40:54.753Z\",\n            \"updatedAt\": \"2025-12-06T19:45:47.621Z\"\n        },\n        {\n            \"id\": 1,\n            \"clientId\": 2,\n            \"title\": \"test\",\n            \"version\": 1,\n            \"questions\": [\n                {\n                    \"options\": [\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"Yes\"\n                        },\n                        {\n                            \"key\": \"no\",\n                            \"value\": \"No\"\n                        }\n                    ],\n                    \"question\": \"Cooler present?\",\n                    \"isRequired\": true,\n                    \"questionType\": \"radio\"\n                },\n                {\n                    \"options\": [\n                        {\n                            \"key\": \"eatable\",\n                            \"value\": \"Eatable\",\n                            \"isDefault\": true\n                        },\n                        {\n                            \"key\": \"drinkable\",\n                            \"value\": \"Drinkable\"\n                        }\n                    ],\n                    \"question\": \"category\",\n                    \"isRequired\": true,\n                    \"questionType\": \"dropdown\"\n                },\n                {\n                    \"options\": [\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"License present\"\n                        },\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"Number active\"\n                        },\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"RC book present\"\n                        }\n                    ],\n                    \"question\": \"Driver Details?\",\n                    \"isRequired\": true,\n                    \"questionType\": \"checkbox\"\n                }\n            ],\n            \"isDeleted\": false,\n            \"createdBy\": 6,\n            \"createdAt\": \"2025-12-06T19:40:17.292Z\",\n            \"updatedAt\": \"2025-12-06T19:40:17.292Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get checklist by id and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/checklist/:id?version=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"checklist",
+								":id"
+							],
+							"query": [
+								{
+									"key": "version",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get checklist by id and version",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/v1/checklist/:id?version=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"checklist",
+										":id"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "756"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f4-fR8zZTRKRxCJ4gHqT/qwAKuIV3Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Dec 2025 20:05:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"id\": 1,\n        \"clientId\": 2,\n        \"title\": \"test updated\",\n        \"version\": 1,\n        \"questions\": [\n            {\n                \"options\": [\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"Yes\"\n                    },\n                    {\n                        \"key\": \"no\",\n                        \"value\": \"No\"\n                    }\n                ],\n                \"question\": \"Cooler present?\",\n                \"isRequired\": true,\n                \"questionType\": \"radio\"\n            },\n            {\n                \"options\": [\n                    {\n                        \"key\": \"eatable\",\n                        \"value\": \"Eatable\",\n                        \"isDefault\": true\n                    },\n                    {\n                        \"key\": \"drinkable\",\n                        \"value\": \"Drinkable\"\n                    }\n                ],\n                \"question\": \"category\",\n                \"isRequired\": true,\n                \"questionType\": \"dropdown\"\n            },\n            {\n                \"options\": [\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"License present\"\n                    },\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"Number active\"\n                    },\n                    {\n                        \"key\": \"yes\",\n                        \"value\": \"RC book present\"\n                    }\n                ],\n                \"question\": \"Driver Details?\",\n                \"isRequired\": true,\n                \"questionType\": \"checkbox\"\n            }\n        ],\n        \"isDeleted\": false,\n        \"createdBy\": 6,\n        \"createdAt\": \"2025-12-06T19:45:47.639Z\",\n        \"updatedAt\": \"2025-12-06T19:45:47.639Z\",\n        \"checklistId\": 2\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "create orders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"clientId\": 2,\n    \"checklistId\": 3,\n    //\"procurmentManagerId\": 1,\n    \"inspectionManagerId\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create orders",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"clientId\": 2,\n    \"checklistId\": 2,\n    //\"procurmentManagerId\": 1,\n    \"inspectionManagerId\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "261"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"105-UK3N7rFtIg2HE2dKg5rgi5dN+i4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Dec 2025 20:14:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"checklistVersion\": 1,\n        \"status\": \"pending\",\n        \"id\": 1,\n        \"clientId\": 2,\n        \"checklistId\": 2,\n        \"inspectionManagerId\": 5,\n        \"createdBy\": 6,\n        \"procurmentManagerId\": 6,\n        \"updatedAt\": \"2025-12-06T20:14:03.146Z\",\n        \"createdAt\": \"2025-12-06T20:14:03.146Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update order status/assign cheklist",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"completed\" // in_progress, done, completed\n    //\"checklistId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/orders/:orderId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"orders",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update order status",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"completed\" // in_progress, done, completed\n    //\"checklistId\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/orders/:orderId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "263"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"107-0uekZhtaZbWfOKS7B4LKGvIswAc\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Dec 2025 07:16:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"id\": 1,\n        \"clientId\": 2,\n        \"checklistId\": 1,\n        \"checklistVersion\": 1,\n        \"procurmentManagerId\": 6,\n        \"inspectionManagerId\": 5,\n        \"status\": \"completed\",\n        \"createdBy\": 6,\n        \"createdAt\": \"2025-12-09T13:15:55.563Z\",\n        \"updatedAt\": \"2025-12-10T06:30:42.890Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/v1/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "263"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"107-lGG63LsMo8zLsFs2K5BoIY5g2e0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Dec 2025 06:17:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": [\n        {\n            \"id\": 1,\n            \"clientId\": 2,\n            \"checklistId\": 1,\n            \"checklistVersion\": 1,\n            \"procurmentManagerId\": 6,\n            \"inspectionManagerId\": 5,\n            \"status\": \"pending\",\n            \"createdBy\": 6,\n            \"createdAt\": \"2025-12-09T13:15:55.563Z\",\n            \"updatedAt\": \"2025-12-09T13:15:55.563Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get order details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/orders/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get order details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/v1/orders/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1216"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c0-fVn4OuQ3zY0JLh7ToIaYas98DlY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Dec 2025 06:31:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"id\": 1,\n        \"clientId\": 2,\n        \"checklistId\": 1,\n        \"checklistVersion\": 1,\n        \"procurmentManagerId\": 6,\n        \"inspectionManagerId\": 5,\n        \"status\": \"done\",\n        \"createdBy\": 6,\n        \"createdAt\": \"2025-12-09T13:15:55.563Z\",\n        \"updatedAt\": \"2025-12-10T06:30:42.890Z\",\n        \"checklist\": {\n            \"id\": 1,\n            \"clientId\": 2,\n            \"title\": \"test check list with image\",\n            \"version\": 1,\n            \"questions\": [\n                {\n                    \"id\": 1,\n                    \"options\": [\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"Yes\"\n                        },\n                        {\n                            \"key\": \"no\",\n                            \"value\": \"No\"\n                        }\n                    ],\n                    \"question\": \"Cooler present?\",\n                    \"isRequired\": true,\n                    \"questionType\": \"radio\",\n                    \"answer\": \"yes\"\n                },\n                {\n                    \"id\": 2,\n                    \"options\": [\n                        {\n                            \"key\": \"eatable\",\n                            \"value\": \"Eatable\",\n                            \"isDefault\": true\n                        },\n                        {\n                            \"key\": \"drinkable\",\n                            \"value\": \"Drinkable\"\n                        }\n                    ],\n                    \"question\": \"category\",\n                    \"isRequired\": true,\n                    \"questionType\": \"dropdown\",\n                    \"answer\": \"eatable\"\n                },\n                {\n                    \"id\": 3,\n                    \"options\": [\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"License present\"\n                        },\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"Number active\"\n                        },\n                        {\n                            \"key\": \"yes\",\n                            \"value\": \"RC book present\"\n                        }\n                    ],\n                    \"question\": \"Driver Details?\",\n                    \"isRequired\": true,\n                    \"questionType\": \"checkbox\",\n                    \"answer\": \"yes\"\n                },\n                {\n                    \"id\": 4,\n                    \"question\": \"upload loading image?\",\n                    \"isRequired\": true,\n                    \"questionType\": \"image\",\n                    \"answer\": \"http://localhost:3000/uploads/checklist-images/1-4-1765348182817.png\"\n                }\n            ],\n            \"isDeleted\": false,\n            \"createdBy\": 6,\n            \"createdAt\": \"2025-12-09T11:50:09.849Z\",\n            \"updatedAt\": \"2025-12-09T11:50:09.849Z\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "submit orders checklist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"questions\": [\n        {\n            \"id\": 1,\n            \"answer\": \"yes\"\n        },\n        {\n            \"id\": 2,\n            \"answer\": \"eatable\"\n        },\n        {\n            \"id\": 3,\n            \"answer\": \"yes\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/orders/:id/answer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"orders",
+								":id",
+								"answer"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "submit orders checklist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"questions\": [\n        {\n            \"id\": 1,\n            \"answer\": \"yes\"\n        },\n        {\n            \"id\": 2,\n            \"answer\": \"eatable\"\n        },\n        {\n            \"id\": 3,\n            \"answer\": \"yes\"\n        },{\n            \"id\": 4,\n            \"answer\": \"http://localhost:3000/uploads/checklist-images/1-4-1765348182817.png\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/orders/:id/answer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"orders",
+										":id",
+										"answer"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "370"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"172-i2rRD0gQGcWHdnB9lvmuh+SBQR8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Dec 2025 06:30:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"id\": 1,\n        \"orderId\": 1,\n        \"checklistId\": 1,\n        \"checklistVersion\": 1,\n        \"answers\": [\n            {\n                \"id\": 1,\n                \"answer\": \"yes\"\n            },\n            {\n                \"id\": 2,\n                \"answer\": \"eatable\"\n            },\n            {\n                \"id\": 3,\n                \"answer\": \"yes\"\n            },\n            {\n                \"id\": 4,\n                \"answer\": \"http://localhost:3000/uploads/checklist-images/1-4-1765348182817.png\"\n            }\n        ],\n        \"createdBy\": 5,\n        \"createdAt\": \"2025-12-10T06:30:42.876Z\",\n        \"updatedAt\": \"2025-12-10T06:30:42.876Z\"\n    }\n}"
+						},
+						{
+							"name": "submit orders checklist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"questions\": [\n        {\n            \"id\": 1,\n            \"answer\": \"yes\"\n        },\n        {\n            \"id\": 2,\n            \"answer\": \"eatable\"\n        },\n        {\n            \"id\": 3,\n            \"answer\": \"yes\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/orders/:id/answer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"orders",
+										":id",
+										"answer"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-BequTp1BOzHsnEa0JcCnNB1QXpo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Dec 2025 06:25:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Missing answer for required question: \\\"upload loading image?\\\"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "upload image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNzY1MzQ3ODAwLCJleHAiOjE3NjU0MzQyMDB9.lAS08s1VKpiILsZzrmtOghUPjBgL9FRAZGVfFWJfd40",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1f04da64-1e80-4540-913a-387ff14ee1c2"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/orders/:orderId/:questionId/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"orders",
+								":orderId",
+								":questionId",
+								"upload"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "1"
+								},
+								{
+									"key": "questionId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "upload image",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "postman-cloud:///1f04da64-1e80-4540-913a-387ff14ee1c2"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/orders/:orderId/:questionId/upload",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"orders",
+										":orderId",
+										":questionId",
+										"upload"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "1"
+										},
+										{
+											"key": "questionId",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-ugMYyJ7YzZta+b7628jcrEmVI24\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Dec 2025 06:36:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"imageUrl\": \"http://localhost:3000/uploads/checklist-images/1-4.png\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get orders activities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/orders/:id/activities",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"orders",
+								":id",
+								"activities"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get orders activities",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/v1/orders/:id/activities",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"orders",
+										":id",
+										"activities"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "DELETE, PUT, GET, POST, PATCH, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "662"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"296-ZmSSddXVBJ5zI1yif1fku28i9BE\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Dec 2025 08:30:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"totalItems\": 3,\n        \"activities\": [\n            {\n                \"id\": 6,\n                \"orderId\": 3,\n                \"userId\": 6,\n                \"activityType\": \"Order status updated to completed\",\n                \"details\": {\n                    \"status\": \"completed\"\n                },\n                \"createdAt\": \"2025-12-10T08:30:06.909Z\"\n            },\n            {\n                \"id\": 3,\n                \"orderId\": 3,\n                \"userId\": 5,\n                \"activityType\": \"Checklist Submitted\",\n                \"details\": {\n                    \"questions\": [\n                        {\n                            \"id\": 1,\n                            \"answer\": \"yes\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"answer\": \"eatable\"\n                        },\n                        {\n                            \"id\": 3,\n                            \"answer\": \"yes\"\n                        },\n                        {\n                            \"id\": 4,\n                            \"answer\": \"yes\"\n                        }\n                    ]\n                },\n                \"createdAt\": \"2025-12-10T08:23:46.295Z\"\n            },\n            {\n                \"id\": 1,\n                \"orderId\": 3,\n                \"userId\": 6,\n                \"activityType\": \"Order created\",\n                \"details\": {\n                    \"clientId\": 2,\n                    \"checklistId\": 1,\n                    \"inspectionManagerId\": 5\n                },\n                \"createdAt\": \"2025-12-10T08:20:30.317Z\"\n            }\n        ],\n        \"totalPages\": 1,\n        \"currentPage\": 1\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNzY1MzUyMTc4LCJleHAiOjE3NjU0Mzg1Nzh9.bmi3cM1fBiTBzJg19egtuLZkiii2XrK70SrFn1GNcGw",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -4,7 +4,6 @@ const checklistVersionModel = require('../models/checklist_version');
 const { validateUserByIdAndRoleId } = require('../services/user.service');
 const { ROLES } = require('../constants/common');
 const { getPaginationOptios } = require('../helpers');
-const { version } = require('joi');
 
 /**
  * finction to check checklist exist by id
